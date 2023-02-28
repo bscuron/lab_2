@@ -132,6 +132,7 @@ if (!isset($_SESSION["RegState"])) $_SESSION["RegState"] = 0;
                     </div>
 
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+                    <a class="btn btn-primary mt-2" href="./php/return.php">Return</a>
                     <div class="w-100 btn btn-warning btn-block mt-2" id="registerMessage"></div>
                 </form>
             <?php
@@ -139,7 +140,6 @@ if (!isset($_SESSION["RegState"])) $_SESSION["RegState"] = 0;
 
             if ($_SESSION["RegState"] == 2) {
             ?>
-
                 <!-- Authentication form -->
                 <form id="authenticationForm">
                     <img class="mb-4" src="./assets/bootstrap-logo.svg" alt="" width="72" height="57">
@@ -177,8 +177,6 @@ if (!isset($_SESSION["RegState"])) $_SESSION["RegState"] = 0;
             }
             if ($_SESSION["RegState"] == 3) {
             ?>
-
-
                 <!-- Reset password form -->
                 <form id="resetPasswordForm">
                     <img class="mb-4" src="./assets/bootstrap-logo.svg" alt="" width="72" height="57">
@@ -191,6 +189,7 @@ if (!isset($_SESSION["RegState"])) $_SESSION["RegState"] = 0;
 
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Authenticate Email</button>
                     <div class="w-100 btn btn-warning btn-block mt-2" id="resetPasswordMessage"></div>
+                    <a class="btn btn-primary mt-2" href="./php/return.php">Return</a>
                 </form>
             <?php
             }
