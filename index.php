@@ -133,7 +133,12 @@ if (!isset($_SESSION["RegState"])) $_SESSION["RegState"] = 0;
 
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
                     <a class="btn btn-primary mt-2" href="./php/return.php">Return</a>
-                    <div class="w-100 btn btn-warning btn-block mt-2" id="registerMessage"></div>
+                    <div class="w-100 btn btn-warning btn-block mt-2" id="registerMessage">
+                        <?php
+                        print $_SESSION["Message"];
+                        $_SESSION["Message"] = ""; // Show only once
+                        ?>
+                    </div>
                 </form>
             <?php
             }
