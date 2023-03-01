@@ -38,7 +38,46 @@ if (!$result) {
     header("location:../index.php");
     exit();
 }
-print "Database updated <br>";
+print "Database updated. Ready to send email. <br>";
+
+// Send email
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+require '../../PHPMailer-master/src/Exception.php';
+require '../../PHPMailer-master/src/PHPMailer.php';
+require '../../PHPMailer-master/src/SMTP.php';
+echo "here";
+
+// Build the PHPMailer object:
+$mail= new PHPMailer(true);
+try {
+    $mail->SMTPDebug = 2; // Wants to see all errors
+    $mail->IsSMTP();
+    $mail->Host="smtp.gmail.com";
+    $mail->SMTPAuth=true;
+    $mail->Username="ben.scuron.4398@gmail.com";
+    $mail->Password = "qzchkavzpopwlwhm";
+    $mail->SMTPSecure = "ssl";
+    $mail->Port=465;
+    $mail->SMTPKeepAlive = true;
+    $mail->Mailer = "smtp";
+    $mail->setFrom("ben.scuron@temple.edu", "Ben Scuron");
+    $mail->addReplyTo("ben.scuron@temple.edu","Ben Scuron");
+    $msg = "Welcome to my project. Your authentication code is: $acode";
+    $mail->addAddress($email, "$firstname $lastname");
+    $mail->Subject = "CIS 4398 Project - Authentication Code";
+    $mail->Body = $msg;
+    $mail->send();
+    $_SESSION["RegState"] = 2;  // Your view index
+    $_SESSION["Message"] = "Email sent ($email)."; // Your man-machine dialog context
+    print "Email sent ($email)... <br>";
+} catch (phpmailerException $e) {
+    $_SESSION["Message"] = "Mailer error: " . $e->errorMessage();
+    $_SESSION["RegState"] = 1; // Your view index
+    print "Mail send failed: " . $e->errorMessage;
+}
+header("location:../index.php"); // Redirection to landing page
 
 exit();
 ?>

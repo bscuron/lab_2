@@ -162,8 +162,7 @@ if (!isset($_SESSION["RegState"])) $_SESSION["RegState"] = 0;
 
                 <!-- Set password form -->
                 <form id="setPasswordForm">
-                    <img class="mb-4" src="./assets/bootstrap-logo.svg" alt="" width="72" height="57">
-                    <h1 class="h3 mb-3 fw-normal">Please Set New Password</h1>
+                    <h1 class="mt-2 h3 mb-3 fw-normal">Please Set New Password</h1>
 
                     <div class="form-floating">
                         <input type="password" class="form-control" name="setPassword1" placeholder="Password">
